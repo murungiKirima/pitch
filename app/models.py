@@ -50,7 +50,7 @@ class Category(db.Model):
 
     @classmethod
     def get_categories(cls):
-        categories = PitchCategory.query.all()
+        categories = Category.query.all()
         return categories
 
 class Pitches(db.Model):
