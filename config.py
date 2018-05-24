@@ -1,7 +1,7 @@
 import os
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://murungi:murungi1@localhost/watchlist'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://murungi:murungi1@localhost/pitch'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
 
     MAIL_SERVER = 'smtp.googlemail.com'

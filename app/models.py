@@ -1,4 +1,4 @@
-from app import db
+from app import create_app,db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from . import login_manager
@@ -42,6 +42,7 @@ class Category(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.String(255))
     description = db.Column(db.String(255))
+    pitches = db.relationship("Pitches", backref="category", lazy="dynamic")
 
     def save_category(self):
         db.session.add(self)
@@ -61,7 +62,7 @@ class Pitches(db.Model):
     actual_pitch = db.Column(db.String)
     date_posted = db.Column(db.DateTime, default=datetime.now)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    category_id = db.Column(db.Integer, db.ForeignKey("pitch_categories.id"))
+    category_id = db.Column(db.Integer, db.ForeignKey("category.id"))
     comment = db.relationship("Comments", backref="pitches", lazy="dynamic")
 
     def save_pitch(self):
